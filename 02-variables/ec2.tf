@@ -1,13 +1,13 @@
-resource "aws_instance" "web" {
+resource "aws_instance" "mongodb" {
   ami           = var.ami_id
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.web.id]
+  vpc_security_group_ids = [aws_security_group.mongodb.id]
 
   tags = var.ec2_tags
 }
 
-resource "aws_security_group" "web" {
-  name = "web"
+resource "aws_security_group" "mongodb" {
+  name = "mongodb"
   description = "Allow TLS inbound and all outbound traffic"
 
   ingress {
@@ -26,6 +26,6 @@ resource "aws_security_group" "web" {
 
 
   tags = {
-    Name = "roboshop-web"
+    Name = "roboshop-mongodb"
   }
 }
